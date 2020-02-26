@@ -11,7 +11,7 @@ const Cats = () => {
     (async () => {
       const data = await (
         await fetch(
-          `https://api.thecatapi.com/v1/breeds?limit=5&page=${pageNum}`,
+          `https://api.thecatapi.com/v1/breeds?limit=6&page=${pageNum}`,
           {
             headers: {
               "x-api-key": process.env.REACT_APP_CAT_SECRET
@@ -20,8 +20,13 @@ const Cats = () => {
         )
       ).json();
       setStateObj({ cats: data, loading: false });
-      console.log(data.length);
     })().catch(console.log);
+    return () => {
+      setStateObj({
+        loading: true,
+        cats: []
+      });
+    };
   }, [pageNum]);
   return (
     <div className="Cats">
@@ -32,6 +37,20 @@ const Cats = () => {
           {stateObj.cats.map(cat => (
             <Cat cat={cat} key={cat.id} />
           ))}
+          <div className="nav-bottom">
+            <button
+              disabled={pageNum <= 1}
+              onClick={e => setPageNum(pageNum === 1 ? 1 : pageNum - 1)}
+            >
+              Previous
+            </button>
+            <button
+              disabled={pageNum >= 11}
+              onClick={e => setPageNum(pageNum === 11 ? 11 : pageNum + 1)}
+            >
+              Next
+            </button>
+          </div>
         </div>
       )}
     </div>
