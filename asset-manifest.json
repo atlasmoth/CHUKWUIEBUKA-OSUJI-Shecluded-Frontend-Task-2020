@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/static/css/main.d7357595.chunk.css",
+    "main.js": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/static/js/main.ccf48220.chunk.js",
+    "main.js.map": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/static/js/main.ccf48220.chunk.js.map",
+    "runtime-main.js": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/static/js/runtime-main.cbb2b3ab.js",
+    "runtime-main.js.map": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/static/js/runtime-main.cbb2b3ab.js.map",
+    "static/js/2.ba0a0bd7.chunk.js": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/static/js/2.ba0a0bd7.chunk.js",
+    "static/js/2.ba0a0bd7.chunk.js.map": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/static/js/2.ba0a0bd7.chunk.js.map",
+    "index.html": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/index.html",
+    "precache-manifest.e1094394d205889c0bef6fb8b67ae4ae.js": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/precache-manifest.e1094394d205889c0bef6fb8b67ae4ae.js",
+    "service-worker.js": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/service-worker.js",
+    "static/css/main.d7357595.chunk.css.map": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/static/css/main.d7357595.chunk.css.map",
+    "static/js/2.ba0a0bd7.chunk.js.LICENSE.txt": "/CHUKWUIEBUKA-OSUJI-Shecluded-Frontend-Task-2020/static/js/2.ba0a0bd7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cbb2b3ab.js",
+    "static/js/2.ba0a0bd7.chunk.js",
+    "static/css/main.d7357595.chunk.css",
+    "static/js/main.ccf48220.chunk.js"
+  ]
+}
