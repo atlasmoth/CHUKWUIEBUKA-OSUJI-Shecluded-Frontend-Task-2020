@@ -1,14 +1,17 @@
 import React, { useEffect, useReducer } from "react";
-import Catslist from "./Catslist";
 import Banner from "./Banner";
+import Pagination from "./Pagination";
 
 function reducer(state, action) {
   switch (action.type) {
     case "add": {
-      return { ...state, breeds: action.breeds, loading: false };
+      return { ...state, breeds: [...action.breeds], loading: false };
     }
     case "update": {
       return { ...state, page: action.page };
+    }
+    case "refresh": {
+      return { ...state, breeds: [], loading: true };
     }
     default: {
       return state;
@@ -16,7 +19,7 @@ function reducer(state, action) {
   }
 }
 
-const Cats = () => {
+const Cats = ({ history }) => {
   const [stateObj, dispatch] = useReducer(reducer, {
     breeds: [],
     page: 1,
@@ -39,8 +42,12 @@ const Cats = () => {
           breeds
         });
       })
-      .catch(console.log);
-  }, [stateObj.page]);
+      .catch(({ message }) => {
+        console.log(message);
+        history.push("/");
+      });
+    return () => dispatch({ type: "refresh" });
+  }, [stateObj.page, history]);
   return (
     <div className="Cats">
       {stateObj.loading ? (
@@ -60,6 +67,7 @@ const Cats = () => {
             >
               Previous
             </button>
+            <Pagination num={5} dispatch={dispatch} />
             <button
               disabled={stateObj.page === 5}
               onClick={() =>

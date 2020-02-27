@@ -7,9 +7,11 @@ function Header() {
         <h2>Home</h2>
       </NavLink>
       <NavLink to="/cats">
-        <h2>cats</h2>
+        <h2>Cats</h2>
       </NavLink>
-      <nav></nav>
+      <NavLink to="/lotr">
+        <h2>LOTR</h2>
+      </NavLink>
     </div>
   );
 }

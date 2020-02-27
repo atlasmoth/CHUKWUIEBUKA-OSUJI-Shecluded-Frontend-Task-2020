@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 :root {
-  height: 100%;
+  min-height: 100%;
   --box-shadow: 7px 7px 19px 0px rgba(50, 50, 50, 0.28);
 }
 body {
@@ -36,6 +36,7 @@ img {
 .Cats {
   text-align: center;
   margin: 0 auto;
+  padding: 20px;
 }
 .catslist {
   max-width: 960px;
@@ -74,7 +75,7 @@ select {
   border: 5px solid transparent;
   border-top-color: #000;
   border-bottom-color: #000;
-  display: inline-block;
+  margin: 0 auto;
   margin-top: 100px;
 }
 
@@ -87,7 +88,7 @@ select {
   }
 }
 
-.Cats .container {
+.Cats {
   display: flex;
   flex-direction: column;
 }
@@ -105,5 +106,39 @@ select {
   grid-auto-rows: auto;
 }
 .navigation {
-  background-color: tomato;
+  display: flex;
+  justify-content: center;
+}
+
+/* lord of the rings chale. */
+.Lotr {
+  max-width: 960px;
+  margin: 10px auto;
+}
+.Lotr .box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Lotr .box .Character {
+  flex-grow: 1;
+  flex-basis: 200px;
+  flex-shrink: 0;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+}
+.Home {
+  background-image: radial-gradient(
+    circle at top left,
+    rgba(177, 235, 232, 0.404),
+    rgba(198, 198, 235, 0.301)
+  );
+  height: calc(100vh - 39px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

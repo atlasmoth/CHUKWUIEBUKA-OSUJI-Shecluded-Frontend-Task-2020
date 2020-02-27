@@ -21,15 +21,17 @@ function Catslist(props) {
       .then(breeds => {
         setState({ loading: false, cats: breeds });
       })
-      .catch(console.log);
+      .catch(({ message }) => {
+        console.log(message);
+        props.history.push("/");
+      });
     return () => {
       setState({
         cats: [],
         loading: true
       });
     };
-  }, [props.match.params.breed]);
-  console.log(state.cats);
+  }, [props.match.params.breed, props.history]);
 
   return (
     <div className="catslist">
