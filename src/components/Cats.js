@@ -1,52 +1,73 @@
-import React, { useEffect, useState } from "react";
-import Cat from "./Cat";
+import React, { useEffect, useReducer } from "react";
+import Catslist from "./Catslist";
+import Banner from "./Banner";
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "add": {
+      return { ...state, breeds: action.breeds, loading: false };
+    }
+    case "update": {
+      return { ...state, page: action.page };
+    }
+    default: {
+      return state;
+    }
+  }
+}
 
 const Cats = () => {
-  const [stateObj, setStateObj] = useState({
-    loading: true,
-    cats: []
+  const [stateObj, dispatch] = useReducer(reducer, {
+    breeds: [],
+    page: 1,
+    loading: true
   });
-  const [pageNum, setPageNum] = useState(1);
+
   useEffect(() => {
-    (async () => {
-      const data = await (
-        await fetch(
-          `https://api.thecatapi.com/v1/breeds?limit=6&page=${pageNum}`,
-          {
-            headers: {
-              "x-api-key": process.env.REACT_APP_CAT_SECRET
-            }
-          }
-        )
-      ).json();
-      setStateObj({ cats: data, loading: false });
-    })().catch(console.log);
-    return () => {
-      setStateObj({
-        loading: true,
-        cats: []
-      });
-    };
-  }, [pageNum]);
+    fetch(
+      `https://api.thecatapi.com/v1/breeds?limit=12&page=${stateObj.page}`,
+      {
+        headers: {
+          "x-api-key": process.env.REACT_APP_CAT_SECRET
+        }
+      }
+    )
+      .then(data => data.json())
+      .then(breeds => {
+        dispatch({
+          type: "add",
+          breeds
+        });
+      })
+      .catch(console.log);
+  }, [stateObj.page]);
   return (
     <div className="Cats">
       {stateObj.loading ? (
-        <div className="loading">Loading...</div>
+        <div className="loading"></div>
       ) : (
-        <div className="catslist">
-          {stateObj.cats.map(cat => (
-            <Cat cat={cat} key={cat.id} />
-          ))}
-          <div className="nav-bottom">
+        <div className="container">
+          <Banner cats={stateObj.breeds} />
+          <div className="navigation">
             <button
-              disabled={pageNum <= 1}
-              onClick={e => setPageNum(pageNum === 1 ? 1 : pageNum - 1)}
+              disabled={stateObj.page === 1}
+              onClick={() =>
+                dispatch({
+                  type: "update",
+                  page: stateObj.page === 1 ? 1 : stateObj.page - 1
+                })
+              }
             >
               Previous
             </button>
             <button
-              disabled={pageNum >= 11}
-              onClick={e => setPageNum(pageNum === 11 ? 11 : pageNum + 1)}
+              disabled={stateObj.page === 5}
+              onClick={() =>
+                dispatch({
+                  type: "update",
+                  page: stateObj.page === 5 ? 5 : stateObj.page + 1
+                })
+              }
             >
               Next
             </button>
